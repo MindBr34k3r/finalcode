@@ -166,9 +166,10 @@ public class UpdateFrame implements ActionListener {
 	    f.dispose();
 	}
     }
-    
+
+    /*
     public static void main(String[ ] arg){
         new UpdateFrame().f.setVisible(true);
-    }
+    }*/
 }
  

@@ -261,6 +261,7 @@ public class AddFrame implements ActionListener{
     private void t10ActionPerformed(ActionEvent evt){
     }
 
+    @Override
     public void actionPerformed(ActionEvent evt){
 	    if (evt.getSource() == cancel){
 	        f.dispose();

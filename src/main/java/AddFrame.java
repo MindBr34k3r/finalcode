@@ -139,76 +139,84 @@ public class AddFrame implements ActionListener{
         cancel.setForeground(Color.WHITE);
         cancel.setBounds(450,450,150,40);
         cancel.setFocusable(false);
-        /*cancel.addActionListener(new ActionListener() {
+        cancel.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent evt) {
                 cancelActionPerformed(evt);
             }
-        });*/
+        });
         overAll.add(cancel);
 
         f.setVisible(true);
         f.setSize(850,600);
         f.setLocation(400,150);
     }
-
+    
+    public void cancelActionPerformed(ActionEvent evt) {
+	if (evt.getSource() == cancel) {
+	    f.dispose();
+	}
+    }
     
     private void submitActionPerformed(ActionEvent evt) {                                         
         // THEM THIET BI VAO BANG
+        if (evt.getSource() == submit){
 	    try {
             if (t1.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Enter item!", "Oops Wait...!", JOptionPane.ERROR_MESSAGE);
-            } else {
-                BufferedReader rdfile = new BufferedReader(new FileReader("equips.txt"));
+                JOptionPane.showMessageDialog(null, "Enter name!", "Oops Wait...!", JOptionPane.ERROR_MESSAGE);
+            }else{
+                FileReader fileread = new FileReader("equips.txt");
+                BufferedReader readfile = new BufferedReader(fileread);
 
-                String[] itemline = new String[100];
-                String name = "", manufacture = "", supplier = "", latestFix = "", condition = "", start= "";
-                int id=0, year=0, series=0, operation=0;
+                String[] equipline = new String[100];
+                String name = "", manufacture = "", supplier = "", latestFix = "", condition = "", start= "", id="", year="", series="", operation="";
                 boolean found = false;
 
                 int x = 0;
-                while ((itemline[x] = rdfile.readLine()) != null) {
+                while ((equipline[x] = readfile.readLine()) != null) {
                     x++;
                 }
-                rdfile.close();
+                readfile.close();
 		    
                 if (!(x >= 100)) {
                     name = t1.getText();
 
-                    for (int j = 0; itemline[j] != null; j++) {      //KIEM TRA XEM EQUIP CO TRONG DSACH HAY KHONG
-                        String[] temp = itemline[j].split("\t");
+                    for (int j = 0; equipline[j] != null; j++) {      //KIEM TRA XEM EQUIP CO TRONG DSACH HAY KHONG
+                        String[] temp = equipline[j].split("\t");
 
                         if (name.equals(temp[0])) {
                             found = true;
                         }
                     }
 
-                    if (found) {
-                        JOptionPane.showMessageDialog(null, "Item already exist!\nPlease using UPDATE to change values", "", JOptionPane.WARNING_MESSAGE);
+                    if (found = true) {
+                        JOptionPane.showMessageDialog(null, "Equipment already exist!\nPlease using UPDATE to change values", "", JOptionPane.WARNING_MESSAGE);
                     } else {
-                        id = Integer.parseInt(t2.getText());
+                        id = t2.getText();
                         manufacture = t3.getText();
                         supplier = t4.getText();
-                        year = Integer.parseInt(t5.getText());
-                        series = Integer.parseInt(t6.getText());
+                        year = t5.getText();
+                        series = t6.getText();
                         start = t7.getText();
                         latestFix = t8.getText();
-                        operation = Integer.parseInt(t9.getText());
+                        operation = t9.getText();
                         condition = t10.getText();
 
-                        itemline[x] = name + "\t" + id + "\t" + manufacture + "\t" + supplier  + "\t" + year  + "\t" + series  + "\t" + start  + "\t" + latestFix  + "\t" + operation + "\t" + condition;
+                        equipline[x] = name + "\t" + id + "\t" + manufacture + "\t" + supplier  + "\t" + year  + "\t" + series  + "\t" + start  + "\t" + latestFix  + "\t" + operation + "\t" + condition;
 
-                        PrintWriter wrfile = new PrintWriter(new FileWriter("equips.txt"));
+                        FileWriter filewrite = new FileWriter("equips.txt");
+                        PrintWriter writefile = new PrintWriter(filewrite);
 
-                        for (int j = 0; itemline[j] != null; j++) {
-                            wrfile.println(itemline[j]);
+                        for (int j = 0; equipline[j] != null; j++) {
+                            writefile.println(equipline[j]);
                         }
 
-                        wrfile.close();
+                        writefile.close();
 
                         JOptionPane.showMessageDialog(null, "Succesfully Added!", " Ok!  :-)", JOptionPane.INFORMATION_MESSAGE);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Storage Full!", "Warning!", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Storage Full!", "Warning!", JOptionPane.WARNING_MESSAGE);
                 }
             }
 
@@ -223,8 +231,8 @@ public class AddFrame implements ActionListener{
             t9.setText("");
             t10.setText("");
             
-        } catch (IOException r) {
-        } catch (NumberFormatException r) {
+        } catch (IOException e) {
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Some input may be invalid!", "Warning!", JOptionPane.WARNING_MESSAGE);
 
             t1.setText("");
@@ -238,36 +246,44 @@ public class AddFrame implements ActionListener{
             t9.setText("");
             t10.setText("");
         }
-    } 
-    
+    }}
     private void t1ActionPerformed(ActionEvent evt){
+        submitActionPerformed(evt);
     }
     private void t2ActionPerformed(ActionEvent evt){
+        submitActionPerformed(evt);
     }
     private void t3ActionPerformed(ActionEvent evt){
+        submitActionPerformed(evt);
     }
     private void t4ActionPerformed(ActionEvent evt){
+        submitActionPerformed(evt);
     }
     private void t5ActionPerformed(ActionEvent evt){
+        submitActionPerformed(evt);
     }
     private void t6ActionPerformed(ActionEvent evt){
+        submitActionPerformed(evt);
     }
     private void t7ActionPerformed(ActionEvent evt){
+        submitActionPerformed(evt);
     }
     private void t8ActionPerformed(ActionEvent evt){
+        submitActionPerformed(evt);
     }
     private void t9ActionPerformed(ActionEvent evt){
+        submitActionPerformed(evt);
     }
     private void t10ActionPerformed(ActionEvent evt){
+        submitActionPerformed(evt);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent evt){
-	    if (evt.getSource() == cancel){
-	        f.dispose();
-	}
-    }
     /*public static void main(String[] args){
         new AddFrame().f.setVisible(true);
     }*/
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

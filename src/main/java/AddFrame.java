@@ -191,7 +191,7 @@ public class AddFrame implements ActionListener{
 
                     if (found = true) {
                         JOptionPane.showMessageDialog(null, "Equipment already exist!\nPlease using UPDATE to change values", "", JOptionPane.WARNING_MESSAGE);
-                    } else {
+                    }else{
                         id = t2.getText();
                         manufacture = t3.getText();
                         supplier = t4.getText();

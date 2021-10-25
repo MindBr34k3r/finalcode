@@ -262,8 +262,8 @@ public class AddFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent evt){
-	if (evt.getSource() == cancel){
-	    f.dispose();
+	    if (evt.getSource() == cancel){
+	        f.dispose();
 	}
     }
     /*public static void main(String[] args){

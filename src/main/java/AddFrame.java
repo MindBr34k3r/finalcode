@@ -152,7 +152,7 @@ public class AddFrame implements ActionListener{
         f.setLocation(400,150);
     }
     
-    public void cancelActionPerformed(ActionEvent evt) {
+    private void cancelActionPerformed(ActionEvent evt) {
 	if (evt.getSource() == cancel) {
 	    f.dispose();
 	}

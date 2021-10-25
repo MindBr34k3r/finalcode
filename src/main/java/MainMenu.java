@@ -2,10 +2,16 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -42,6 +48,12 @@ public class MainMenu extends JFrame implements ActionListener {
         deleteButton.setForeground(Color.WHITE);
         deleteButton.setBounds(620, 360, 100 ,30);
         deleteButton.setFocusable(false);
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
         add(deleteButton);
         
         addLabel = new JLabel("Add new Equipment");
@@ -54,6 +66,12 @@ public class MainMenu extends JFrame implements ActionListener {
         addButton.setForeground(Color.WHITE);
         addButton.setBounds(330, 450, 150 ,30);
         addButton.setFocusable(false);
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
         add(addButton);
         
         updateLabel = new JLabel("Update Equipment Details");
@@ -66,11 +84,13 @@ public class MainMenu extends JFrame implements ActionListener {
         updateButton.setForeground(Color.WHITE);
         updateButton.setBounds(330, 490, 150 ,30);
         updateButton.setFocusable(false);
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
         add(updateButton);
-        
-        addButton.addActionListener(this);
-        updateButton.addActionListener(this);
-        deleteButton.addActionListener(this);
         
         mainTable = new JTable(data, header);
         
@@ -84,19 +104,71 @@ public class MainMenu extends JFrame implements ActionListener {
         this.setVisible(true);
     }
     
-    
-    
-    
-    @Override
-    public void actionPerformed(ActionEvent e) {
-	if (e.getSource() == addButton) {
+    private void deleteButtonActionPerformed(ActionEvent evt) {                                         
+        //Xóa Thiết Bị Khỏi Bảng
+        if (evt.getSource() == deleteButton){
+        try{
+            if (deleteField.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Enter equips!", "Oops Wait...!", JOptionPane.ERROR_MESSAGE);
+            }else{
+                FileReader fileread = new FileReader("equips.txt");
+                BufferedReader readfile = new BufferedReader(fileread);
+
+                String[] equipline = new String[100];
+                String[] temp;
+                String delete = deleteField.getText();
+                boolean found = false;
+
+                int x = 0;
+                while ((equipline[x] = readfile.readLine()) != null){
+                    temp = equipline[x].split("\t");
+
+                    if(delete.equals(temp[0])){
+                        found = true;
+                    }else{
+                        x++;
+                    }
+                }
+                readfile.close();
+
+                FileWriter filewrite = new FileWriter("equips.txt");
+                PrintWriter writefile = new PrintWriter(filewrite);
+                for (int j = 0; equipline[j] != null; j++){
+                    writefile.println(equipline[j]);
+                }
+                
+                writefile.close();
+
+                if (!found){
+                    JOptionPane.showMessageDialog(null, "Equipment isn't in the list!", "Ooops!", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Succesfully Deleted!", "Ok!  :-)", JOptionPane.INFORMATION_MESSAGE);
+                }      
+                deleteField.setText("");
+            }
+        } catch (IOException e) {}
+    }}
+     
+    /*private void deleteFieldActionPerformed(ActionEvent evt){
+        //deleteButtonActionPerformed(evt);
+    }*/
+ 
+    private void addActionPerformed(ActionEvent evt) {
+	if (evt.getSource() == addButton) {
 	    new AddFrame().f.setVisible(true);
 	}
-	if (e.getSource() == updateButton) {
+    }
+    private void updateActionPerformed(ActionEvent evt) {
+    	if (evt.getSource() == updateButton) {
 	    new UpdateFrame().f.setVisible(true);
 	}
     }
     
+    @Override
+    public void actionPerformed(ActionEvent evt) {
+        throw new Error("Code sai rồi làm lại đi."); //To change body of generated methods, choose Tools | Templates.
+    
+    }
     public static void main(String[] args) {
 	new MainMenu().setVisible(true);
     }

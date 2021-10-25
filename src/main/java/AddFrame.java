@@ -107,7 +107,7 @@ public class AddFrame implements ActionListener{
         
         id9 = new JLabel("OPERATION REPAIR");
         id9.setBounds(50,350,170,30);
-        id9.setFont(new Font("Tahoma",Font.BOLD,16));      
+        id9.setFont(new Font("Tahoma",Font.BOLD,16));     
         t9 = new JTextField();
         t9.setBounds(250,350,150,30);
         overAll.add(id9);

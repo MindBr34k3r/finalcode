@@ -57,11 +57,11 @@ public class MainMenu extends JFrame implements ActionListener {
         add(deleteButton);
         
         addLabel = new JLabel("Add new Equipment");
-	addLabel.setBounds(50,450,400,30);
-	addLabel.setFont(new Font("Tahoma",Font.BOLD,20));
-	add(addLabel);
+	    addLabel.setBounds(50,450,400,30);
+	    addLabel.setFont(new Font("Tahoma",Font.BOLD,20));
+	    add(addLabel);
 	
-	addButton = new JButton("Add Equipment");
+	    addButton = new JButton("Add Equipment");
         addButton.setBackground(Color.BLACK);
         addButton.setForeground(Color.WHITE);
         addButton.setBounds(330, 450, 150 ,30);
@@ -100,7 +100,6 @@ public class MainMenu extends JFrame implements ActionListener {
         
         getContentPane().setBackground(Color.WHITE);
         
-        deleteButton.addActionListener(this);
         this.setVisible(true);
     }
     

@@ -26,7 +26,7 @@ public class AddFrame implements ActionListener{
     JButton submit, cancel;
     
     AddFrame() {
-	f = new JFrame("Add Student");
+	f = new JFrame("Add Equipments");
         f.setBackground(Color.white);
         f.setLayout(null);
         
@@ -189,7 +189,7 @@ public class AddFrame implements ActionListener{
                         }
                     }
 
-                    if (found = true) {
+                    if (found) {
                         JOptionPane.showMessageDialog(null, "Equipment already exist!\nPlease using UPDATE to change values", "", JOptionPane.WARNING_MESSAGE);
                     }else{
                         id = t2.getText();

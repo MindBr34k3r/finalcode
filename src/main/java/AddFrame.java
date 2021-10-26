@@ -46,6 +46,11 @@ public class AddFrame implements ActionListener{
         id1.setFont(new Font("Tahoma",Font.BOLD,16));        
         t1 = new JTextField();
         t1.setBounds(250,150,150,30);
+        t1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //t1ActionPerformed(evt);
+            }
+        });
         overAll.add(id1);
         overAll.add(t1);
         
@@ -54,6 +59,11 @@ public class AddFrame implements ActionListener{
         id2.setFont(new Font("Tahoma",Font.BOLD,16));        
         t2 = new JTextField();
         t2.setBounds(600,150,150,30);
+        t2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                //t2ActionPerformed(evt);
+            }
+        });
         overAll.add(id2);
         overAll.add(t2);
         
@@ -62,6 +72,11 @@ public class AddFrame implements ActionListener{
         id3.setFont(new Font("Tahoma",Font.BOLD,16));      
         t3 = new JTextField();
         t3.setBounds(250,200,150,30);
+        t3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                //t3ActionPerformed(evt);
+            }
+        });
         overAll.add(id3);
         overAll.add(t3);
         
@@ -72,6 +87,11 @@ public class AddFrame implements ActionListener{
         t4.setBounds(600,200,150,30);
         overAll.add(id4);
         overAll.add(t4);
+        t4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                //t4ActionPerformed(evt);
+            }
+        });
         
         id5 = new JLabel("YEAR");                    
         id5.setBounds(50,250,100,30);
@@ -80,6 +100,11 @@ public class AddFrame implements ActionListener{
         t5.setBounds(250,250,150,30);
         overAll.add(id5);
         overAll.add(t5);
+        t5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                //t5ActionPerformed(evt);
+            }
+        });
         
         id6 = new JLabel("SERIES");
         id6.setBounds(450,250,100,30);
@@ -88,6 +113,11 @@ public class AddFrame implements ActionListener{
         t6.setBounds(600,250,150,30);
         overAll.add(id6);
         overAll.add(t6);
+        t6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                //t6ActionPerformed(evt);
+            }
+        });
         
         id7 = new JLabel("START USING");
         id7.setBounds(50,300,130,30);
@@ -96,6 +126,11 @@ public class AddFrame implements ActionListener{
         t7.setBounds(250,300,150,30);
         overAll.add(id7);
         overAll.add(t7);
+        t7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                //t7ActionPerformed(evt);
+            }
+        });
         
         id8 = new JLabel("LASTEST FIX ");
         id8.setBounds(450,300,130,30);
@@ -104,14 +139,24 @@ public class AddFrame implements ActionListener{
         t8.setBounds(600,300,150,30);
         overAll.add(id8);
         overAll.add(t8);
+        t8.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                //t8ActionPerformed(evt);
+            }
+        });
         
         id9 = new JLabel("OPERATION REPAIR");
         id9.setBounds(50,350,170,30);
-        id9.setFont(new Font("Tahoma",Font.BOLD,16));     
+        id9.setFont(new Font("Tahoma",Font.BOLD,16));      
         t9 = new JTextField();
         t9.setBounds(250,350,150,30);
         overAll.add(id9);
         overAll.add(t9);
+        t9.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                //t9ActionPerformed(evt);
+            }
+        });
         
         id10 = new JLabel("CONDITION");
         id10.setBounds(450,350,150,30);
@@ -120,6 +165,11 @@ public class AddFrame implements ActionListener{
         t10.setBounds(600,350,150,30);
         overAll.add(id10);
         overAll.add(t10);
+        t10.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                //t10ActionPerformed(evt);
+            }
+        });
         
         submit = new JButton("Submit");
         submit.setBackground(Color.BLACK);
@@ -188,10 +238,9 @@ public class AddFrame implements ActionListener{
                             found = true;
                         }
                     }
-
                     if (found) {
                         JOptionPane.showMessageDialog(null, "Equipment already exist!\nPlease using UPDATE to change values", "", JOptionPane.WARNING_MESSAGE);
-                    }else{
+                    } else {
                         id = t2.getText();
                         manufacture = t3.getText();
                         supplier = t4.getText();
@@ -231,8 +280,8 @@ public class AddFrame implements ActionListener{
             t9.setText("");
             t10.setText("");
             
-        } catch (IOException e) {
-        } catch (NumberFormatException e) {
+        } catch (IOException r) {
+        } catch (NumberFormatException r) {
             JOptionPane.showMessageDialog(null, "Some input may be invalid!", "Warning!", JOptionPane.WARNING_MESSAGE);
 
             t1.setText("");
@@ -247,43 +296,43 @@ public class AddFrame implements ActionListener{
             t10.setText("");
         }
     }}
-    private void t1ActionPerformed(ActionEvent evt){
-        submitActionPerformed(evt);
+    /*private void t1ActionPerformed(ActionEvent evt){
+       // submitActionPerformed(evt);
     }
     private void t2ActionPerformed(ActionEvent evt){
-        submitActionPerformed(evt);
+        //submitActionPerformed(evt);
     }
     private void t3ActionPerformed(ActionEvent evt){
-        submitActionPerformed(evt);
+        //submitActionPerformed(evt);
     }
     private void t4ActionPerformed(ActionEvent evt){
-        submitActionPerformed(evt);
+        //submitActionPerformed(evt);
     }
     private void t5ActionPerformed(ActionEvent evt){
-        submitActionPerformed(evt);
+        //submitActionPerformed(evt);
     }
     private void t6ActionPerformed(ActionEvent evt){
-        submitActionPerformed(evt);
+        //submitActionPerformed(evt);
     }
     private void t7ActionPerformed(ActionEvent evt){
-        submitActionPerformed(evt);
+        //submitActionPerformed(evt);
     }
     private void t8ActionPerformed(ActionEvent evt){
-        submitActionPerformed(evt);
+        //submitActionPerformed(evt);
     }
     private void t9ActionPerformed(ActionEvent evt){
-        submitActionPerformed(evt);
+       // submitActionPerformed(evt);
     }
     private void t10ActionPerformed(ActionEvent evt){
-        submitActionPerformed(evt);
-    }
+        //submitActionPerformed(evt);
+    }*/
 
     /*public static void main(String[] args){
         new AddFrame().f.setVisible(true);
     }*/
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void actionPerformed(ActionEvent evt) {
+        throw new Error("Code sai rồi làm lại đi."); //To change body of generated methods, choose Tools | Templates.
     }
 }

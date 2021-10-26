@@ -18,14 +18,14 @@ import javax.swing.JTextField;
 
 public class MainMenu extends JFrame implements ActionListener {
     
-    JLabel addLabel, updateLabel, deleteLabel;
-    JButton addButton, updateButton, deleteButton;
-    JTextField deleteField;
+    JLabel addLabel, updateLabel, deleteLabel, searchLabel;
+    JButton addButton, updateButton, deleteButton, searchButton;
+    JTextField deleteField, searchField;
     JTable mainTable;
     
     String header[] = {"NAME", "ID", "MANUFACTURE", "SUPLIER", "YEAR", "SERIES ",
 	       		"START USING ", "LASTEST FIX ", "OPERATION REPAIR", "CONDITION "};
-    String data[][] = new String[20][10];
+    String data[][] = new String[100][10];
     int i = 0, j = 0;
     
     public MainMenu() {
@@ -35,18 +35,18 @@ public class MainMenu extends JFrame implements ActionListener {
 	setLayout(null);
 	
 	deleteLabel = new JLabel("Enter roll number to delete: ");
-	deleteLabel.setBounds(50,360,400,30);
+	deleteLabel.setBounds(50,400,400,30);
 	deleteLabel.setFont(new Font("Tahoma",Font.BOLD,20));
 	add(deleteLabel);
 	
 	deleteField = new JTextField();
-        deleteField.setBounds(400,360,200,30);
+        deleteField.setBounds(400,400,200,30);
         add(deleteField);
         
         deleteButton = new JButton("Delete");
         deleteButton.setBackground(Color.BLACK);
         deleteButton.setForeground(Color.WHITE);
-        deleteButton.setBounds(620, 360, 100 ,30);
+        deleteButton.setBounds(620, 400, 100 ,30);
         deleteButton.setFocusable(false);
         deleteButton.addActionListener(new ActionListener() {
             @Override
@@ -91,11 +91,33 @@ public class MainMenu extends JFrame implements ActionListener {
             }
         });
         add(updateButton);
+	    
+	searchLabel = new JLabel("Enter ID to search");
+        searchLabel.setBounds(850,8,400,20);
+        searchLabel.setFont(new Font("Tahoma",Font.ITALIC,12));
+        add(searchLabel);
+        
+        searchField = new JTextField();
+        searchField.setBounds(850,25,230,25);
+        add(searchField);
+        
+        searchButton = new JButton("Search");
+        searchButton.setBackground(Color.BLACK);
+        searchButton.setForeground(Color.WHITE);
+        searchButton.setBounds(1085, 25, 85 ,25);
+        searchButton.setFocusable(false);
+	/*searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });*/
+        add(searchButton);
         
         mainTable = new JTable(data, header);
         
         JScrollPane tableScroll = new JScrollPane(mainTable);
-        tableScroll.setBounds(20,20,1200,330);
+        tableScroll.setBounds(20,60,1200,330);
         add(tableScroll);
         
         getContentPane().setBackground(Color.WHITE);
@@ -104,7 +126,7 @@ public class MainMenu extends JFrame implements ActionListener {
     }
     
     private void deleteButtonActionPerformed(ActionEvent evt) {                                         
-        //Xóa Thiết Bị Khỏi Bảng
+        //Xóa Thiết Bị Khỏi Danh Sách
         if (evt.getSource() == deleteButton){
         try{
             if (deleteField.getText().equals("")){
@@ -169,7 +191,7 @@ public class MainMenu extends JFrame implements ActionListener {
     
     }
     public static void main(String[] args) {
-	new MainMenu().setVisible(true);
+	    new MainMenu().setVisible(true);
     }
     
 }

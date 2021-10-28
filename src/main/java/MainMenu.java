@@ -16,30 +16,165 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+
 public class MainMenu extends JFrame implements ActionListener {
     
-    JLabel addLabel, updateLabel, deleteLabel, searchLabel;
-    JButton addButton, updateButton, deleteButton, searchButton;
-    JTextField deleteField, searchField;
-    JTable mainTable;
+    private JLabel addLabel, updateLabel, deleteLabel, searchLabel, displayLabel;
+    private JButton addButton, updateButton, deleteButton, searchButton, displayButton;
+    private JTextField deleteField, searchField, displayField;
+    private JTable mainTable;
     
-    String header[] = {"NAME", "ID", "MANUFACTURE", "SUPLIER", "YEAR", "SERIES ",
-	       		"START USING ", "LASTEST FIX ", "OPERATION REPAIR", "CONDITION "};
-    String data[][] = new String[100][10];
-    int i = 0, j = 0;
-    
+    int j = 0;
+
     public MainMenu() {
-	super("Equipment Management System");
-	setSize(1260,650);
-	setLocation(200, 200);
-	setLayout(null);
-	
-	deleteLabel = new JLabel("Enter roll number to delete: ");
-	deleteLabel.setBounds(50,400,400,30);
-	deleteLabel.setFont(new Font("Tahoma",Font.BOLD,20));
-	add(deleteLabel);
-	
-	deleteField = new JTextField();
+        super("Equipment Management System");
+        setSize(1260,650);
+        setLocation(200, 200);
+        setLayout(null);
+        
+        //String header[] = new String[] {"NAME", "ID", "MANUFACTURE", "SUPLIER", "YEAR", "SERIES ",
+        //              "START USING ", "LASTEST FIX ", "OPERATION REPAIR", "CONDITION "};
+        //Object[][] data = new Object[100][10];
+
+        mainTable = new JTable(/*data, header*/);
+        mainTable.setBounds(30,40,200,300);
+        JScrollPane tableScroll = new JScrollPane(mainTable);
+        tableScroll.setBounds(20,60,1200,330);
+        add(tableScroll);
+        mainTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] { 
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+            },
+            new String[] {"NAME", "ID", "MANUFACTURE", "SUPLIER", "YEAR", "SERIES ",
+                        "START USING ", "LASTEST FIX ", "OPERATION REPAIR", "CONDITION "
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                java.lang.String.class
+            };
+            
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+            
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        mainTable.getTableHeader().setReorderingAllowed(false);
+
+        deleteLabel = new JLabel("Enter roll number to delete: ");
+        deleteLabel.setBounds(50,400,400,30);
+        deleteLabel.setFont(new Font("Tahoma",Font.BOLD,20));
+        add(deleteLabel);
+        
+	    deleteField = new JTextField();
         deleteField.setBounds(400,400,200,30);
         add(deleteField);
         
@@ -55,6 +190,24 @@ public class MainMenu extends JFrame implements ActionListener {
             }
         });
         add(deleteButton);
+
+        displayButton = new JButton("Display");
+        displayButton.setBackground(Color.BLACK);
+        displayButton.setForeground(Color.WHITE);
+        displayButton.setBounds(210, 25, 85 ,25);
+        displayButton.setFocusable(false);
+        displayButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                displayButtonActionPerformed(evt);
+            }
+        });
+        add(displayButton);
+        
+        displayLabel = new JLabel("Display Equipments");
+	    displayLabel.setBounds(20,25,200,25);
+	    displayLabel.setFont(new Font("Tahoma",Font.BOLD,18));
+	    add(displayLabel);
         
         addLabel = new JLabel("Add new Equipment");
 	    addLabel.setBounds(50,450,400,30);
@@ -92,7 +245,7 @@ public class MainMenu extends JFrame implements ActionListener {
         });
         add(updateButton);
 	    
-	searchLabel = new JLabel("Enter ID to search");
+	    searchLabel = new JLabel("Enter ID to search");
         searchLabel.setBounds(850,8,400,20);
         searchLabel.setFont(new Font("Tahoma",Font.ITALIC,12));
         add(searchLabel);
@@ -106,19 +259,13 @@ public class MainMenu extends JFrame implements ActionListener {
         searchButton.setForeground(Color.WHITE);
         searchButton.setBounds(1085, 25, 85 ,25);
         searchButton.setFocusable(false);
-	/*searchButton.addActionListener(new ActionListener() {
+	    /*searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 searchButtonActionPerformed(evt);
             }
         });*/
         add(searchButton);
-        
-        mainTable = new JTable(data, header);
-        
-        JScrollPane tableScroll = new JScrollPane(mainTable);
-        tableScroll.setBounds(20,60,1200,330);
-        add(tableScroll);
         
         getContentPane().setBackground(Color.WHITE);
         
@@ -175,16 +322,44 @@ public class MainMenu extends JFrame implements ActionListener {
     }*/
  
     private void addActionPerformed(ActionEvent evt) {
-	if (evt.getSource() == addButton) {
-	    new AddFrame().f.setVisible(true);
-	}
+	    if (evt.getSource() == addButton) {
+	        new AddFrame().f.setVisible(true);
+	    }
     }
     private void updateActionPerformed(ActionEvent evt) {
     	if (evt.getSource() == updateButton) {
-	    new UpdateFrame().f.setVisible(true);
-	}
+	        new UpdateFrame().f.setVisible(true);
+	    }
     }
-    
+
+    private void displayButtonActionPerformed(ActionEvent evt) {
+        // Hiển thị thông tin
+            if(evt.getSource() == displayButton){
+                try {
+                    //Xóa bảng
+                    for (int x = 0; x < 100; x++) {
+                        for (int j = 0; j < 10; j++) { 
+                            mainTable.setValueAt("", x, j);
+                        }
+                    }
+                    // Đọc -> ghi dữ liệu ra bảng
+                    BufferedReader rdfile = new BufferedReader(new FileReader("equips.txt"));
+
+                    String[] equipline = new String[100];
+                    String[] temp;
+
+                    for (int x = 0; (equipline[x] = rdfile.readLine()) != null; x++) {
+                        temp = equipline[x].split("\t");
+                        for (int j = 0; j < 10; j++) {
+                            mainTable.setValueAt(temp[j], x, j);
+                        }
+                    }
+                    rdfile.close();
+
+                } catch (IOException e) {
+                }
+            }
+    }
     @Override
     public void actionPerformed(ActionEvent evt) {
         throw new Error("Code sai rồi làm lại đi."); //To change body of generated methods, choose Tools | Templates.
@@ -193,5 +368,4 @@ public class MainMenu extends JFrame implements ActionListener {
     public static void main(String[] args) {
 	    new MainMenu().setVisible(true);
     }
-    
 }
